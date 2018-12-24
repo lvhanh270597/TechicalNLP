@@ -19,7 +19,7 @@ thích(nam, X, Y).
 % nam yeu ai?
 yêu(nam, X, Y).
 
-% moi dua con deu hoc goi mon toan
+% moi dua con deu hoc gioi mon toan
 với_mọi(X, con(X, _) => học_giỏi(X, môn_toán)).
 % nam yeu moi hoc sinh
 với_mọi(X, học_sinh(X) => yêu(nam, X, _)).

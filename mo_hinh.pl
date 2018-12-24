@@ -28,8 +28,9 @@ yêu(nam, hoa, hai_năm).
 yêu_qúy(đạt, lan).
 yêu_qúy(nhi, lan).
 học_sinh(nam).
+học_sinh(X) :- học(X, _), !.
 học_cùng_lớp(hoa, nam).
 học_cùng_lớp(nam, hoa).
 học(nam, lớp_mười_hai).
-học(X, Y) :- học_cùng_lớp(Z, X), học(Z, Y).
+học(X, Y) :- học_cùng_lớp(Z, X), học(Z, Y), !.
 con(X, Y) :- mẹ(Y, X); bố(Y, X).
