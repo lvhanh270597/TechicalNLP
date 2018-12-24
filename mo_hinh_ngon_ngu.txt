@@ -1,0 +1,33 @@
+D = {d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15}
+F : {
+	F(nam) = d1
+	F(hà_nội) = d2
+	F(lớp_mười_hai) = d3
+	F(đạt) = d4
+	F(nhi) = d5
+	F(môn_toán) = d6
+	F(lớp) = d7
+	F(thể_thao) = d8
+	F(rất) = d9
+	F(hoa) = d10
+	F(hai_năm) = d11
+	F(họ) = d12
+	F(thư_viện) = d13
+	F(hay) = d14
+	F(lan) = d15
+	F(học_sinh) = {d1}
+	F(giám_đốc) = {d4}
+	F(sống_ở) = {(d1, d2)}
+	F(học) = {(d1, d3)}
+	F(bố) = {(d4, d1)}
+	F(mẹ) = {(d5, d1)}
+	F(giáo_viên) = {(d5, d6)}
+	F(học_giỏi) = {(d1, d6)}
+	F(hoc_sinh_giỏi) = {(d1, d7)}
+	F(ban_gái) = {(d10, d1)}
+	F(học_cùng_lớp) = {(d10, d1)}
+	F(yêu_qúy) = {(d5, d15), (d4, d15)}
+	F(thích) = {(d1, d8, d9)}
+	F(yêu) = {(d10, d1, d11)}
+	F(đọc_sách) = {(d12, d13, d14)}
+}

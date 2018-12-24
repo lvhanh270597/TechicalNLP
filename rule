@@ -1,18 +1,18 @@
-sống_ở(nam, Hà nội)
+sống_ở(nam, hà_nội)
 học_sinh(nam)
 học(nam, lớp_mười_hai)
-Bố(đat, nam)
-giám_đọc(đat).
+Bố(đạt, nam)
+giám_đốc(đạt).	
 mẹ(nhi, nam).
 giáo_viên(nhi, môn_toán).
 
 học_giỏi(nam,môn_toán)
 
-của(nam,lớp,học_sinh_giỏi)
+hoc_sinh_giỏi(nam,lớp)
 
 thích(nam,thể_thao,rất)
 
-của( hoa,nam,bạn_gái)
+ban_gái(hoa,nam)
 
 học_cùng_lớp(hoa,nam).
 
