@@ -1,0 +1,13 @@
+3 phát biểu đơn giản chỉ gồm chủ từ, động từ, tân từ
++ Hoa là học_sinh.
++ mẹ nam sống_ở hà_nội
++ hoa đang học lớp_mười_hai.
+3 phát biểu có liên từ
++ bố nam sống ở hà nội và mẹ nam cũng sống ở hà nội.
++ Nếu nam không học lớp_mười_hai thì nam không yêu lan.
++ nếu mẹ nam không là giá viên môn toan thì nam không học giỏi môn toán.
+3 phát biểu có từ hỏi là "ai" và "cái gì"
++ Bố nam là ai ?
++ Nam thích cái gì ?
++ Nam yêu ai ?
+3 phát biểu có lượng từ với mọi
