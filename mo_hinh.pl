@@ -31,4 +31,5 @@ học_sinh(nam).
 học_cùng_lớp(hoa, nam).
 học_cùng_lớp(nam, hoa).
 học(nam, lớp_mười_hai).
-học(X, Y) :- học_cùng_lớp(Z, X), hoc(Z, Y).
+học(X, Y) :- học_cùng_lớp(Z, X), học(Z, Y).
+con(X, Y) :- mẹ(Y, X); bố(Y, X).
