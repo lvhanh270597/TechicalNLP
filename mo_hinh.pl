@@ -14,8 +14,6 @@ giá_trị(thư_viện).
 giá_trị(hay).
 giá_trị(lan).
 sống_ở(nam, hà_nội).
-học_sinh(nam).
-học(nam, lớp_mười_hai).
 bố(đạt, nam).
 giám_đốc(đạt).
 mẹ(nhi, nam).
@@ -24,8 +22,13 @@ học_giỏi(nam, môn_toán).
 hoc_sinh_giỏi(nam, lớp).
 thích(nam, thể_thao, rất).
 ban_gái(hoa, nam).
-học_cùng_lớp(hoa, nam).
 yêu(hoa, nam, hai_năm).
+yêu(nam, hoa, hai_năm).
 đọc_sách(họ, thư_viện, hay).
 yêu_qúy(đạt, lan).
 yêu_qúy(nhi, lan).
+học_sinh(nam).
+học_cùng_lớp(hoa, nam).
+học_cùng_lớp(nam, hoa).
+học(nam, lớp_mười_hai).
+học(X, Y) :- học_cùng_lớp(Z, X), hoc(Z, Y).
