@@ -14,10 +14,10 @@ giá_trị(thư_viện).
 giá_trị(hay).
 giá_trị(lan).
 sống_ở(nam, hà_nội).
-học_sinh(nam,).
+học_sinh(nam).
 học(nam, lớp_mười_hai).
 bố(đạt, nam).
-giám_đốc(đạt,).
+giám_đốc(đạt).
 mẹ(nhi, nam).
 giáo_viên(nhi, môn_toán).
 học_giỏi(nam, môn_toán).

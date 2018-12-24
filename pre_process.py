@@ -78,8 +78,7 @@ def show_model_pl(fact, rules):
 		print('giá_trị({0}).'.format(item[0]))
 	for item in rules:
 		outside, inside = item
-		print('{0}{1}.'.format(outside, str(tuple(inside)).replace('\'', '')))
-
+		print('{0}{1}.'.format(outside, str(tuple(inside)).replace('\'', '').replace(',)', ')')))
 #show_model(lst, D)
 #show_tu_vung(lst)
 show_model_pl(fact, rules)
