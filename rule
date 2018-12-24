@@ -1,0 +1,23 @@
+sống_ở(nam, Hà nội)
+học_sinh(nam)
+học(nam, lớp_mười_hai)
+Bố(đat, nam)
+giám_đọc(đat).
+mẹ(nhi, nam).
+giáo_viên(nhi, môn_toán).
+
+học_giỏi(nam,môn_toán)
+
+của(nam,lớp,học_sinh_giỏi)
+
+thích(nam,thể_thao,rất)
+
+của( hoa,nam,bạn_gái)
+
+học_cùng_lớp(hoa,nam).
+
+yêu(hoa,nam,hai_năm)
+
+đọc_sách(họ, thư_viện,hay).
+yêu_qúy(đạt,lan)
+yêu_qúy(nhi,lan)
