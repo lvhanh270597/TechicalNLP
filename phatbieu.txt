@@ -1,6 +1,6 @@
 3 phát biểu đơn giản chỉ gồm chủ từ, động từ, tân từ
 + Hoa là học_sinh.
-+ mẹ nam sống_ở hà_nội
++ mẹ nam sống hà_nội
 + hoa đang học lớp_mười_hai.
 3 phát biểu có liên từ
 + bố nam sống ở hà nội và mẹ nam cũng sống ở hà nội.

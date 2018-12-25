@@ -13,7 +13,7 @@ giá_trị(họ).
 giá_trị(thư_viện).
 giá_trị(hay).
 giá_trị(lan).
-sống_ở(nam, hà_nội).
+sống(nam, hà_nội).
 bố(đạt, nam).
 giám_đốc(đạt).
 mẹ(nhi, nam).

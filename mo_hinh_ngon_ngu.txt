@@ -17,7 +17,7 @@ F : {
 	F(lan) = d15
 	F(học_sinh) = {d1}
 	F(giám_đốc) = {d4}
-	F(sống_ở) = {(d1, d2)}
+	F(sống) = {(d1, d2)}
 	F(học) = {(d1, d3)}
 	F(bố) = {(d4, d1)}
 	F(mẹ) = {(d5, d1)}

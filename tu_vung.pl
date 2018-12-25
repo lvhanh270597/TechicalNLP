@@ -1,7 +1,7 @@
 từ_vựng(thích, 3).
 từ_vựng(yêu, 3).
 từ_vựng(đọc_sách, 3).
-từ_vựng(sống_ở, 2).
+từ_vựng(sống, 2).
 từ_vựng(học, 2).
 từ_vựng(bố, 2).
 từ_vựng(mẹ, 2).
