@@ -5,4 +5,5 @@
 *    Chuyển 12 câu mệnh đề đó về ngôn ngữ bậc nhất. (Lưu ý: Cấu trúc danh ngữ phải có mở rộng)
 *    Nhận một câu hỏi trả về câu trả lời là một đối tượng
 *    Trả về đúng/sai nếu là nhận định
-## Làm việc online ở: 
+## Làm việc online ở
+* https://trello.com/b/TR5zczFg/technical-nlp
