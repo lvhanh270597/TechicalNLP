@@ -1,3 +1,22 @@
+'''
+This program allowes the users can extract first order model with input is the rules
+Example:
+Input:
+sống(nam, hà_nội)
+học_sinh(nam)
+học(nam, lớp_mười_hai)
+Bố(đạt, nam)
+
+Output:
+D = {d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15}
+F : {
+	F(nam) = d1
+	F(hà_nội) = d2
+	F(lớp_mười_hai) = d3
+	F(đạt) = d4
+}
+'''
+
 import re
 import operator
 

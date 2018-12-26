@@ -1,6 +1,0 @@
-1. Tập kí hiệu phi logic là tập từ vựng mà trên đó các phép toán logic được áp dụng
-2. Tập hữu hạn các giá trị và biến
-3. Các phép toán logic gồm phép toán phủ định, phép toán hội, phép toán tuyển, và phép kéo theo
-4. Dấu mở ngoặc tròn, dấu phẩy. Các dấu ngoặc tròn dùng để xác định những biểu thức con có độ ưu tiên cao hơn trong một biểu thức.
-Xác định tập từ vựng thôi
-
