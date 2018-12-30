@@ -1,1 +1,35 @@
-nam sống ở hà nội. nam là học sinh và đang học lớp mười hai. bố nam tên đạt và là giám đốc, mẹ nam tên nhi và là giáo viên môn toán, vì vậy nam học giỏi môn toán. nam là học sinh giỏi trong lớp. nam rất thích thể thao . hoa là bạn gái của nam. hoa học cùng lớp với nam. họ hay đọc sách ở thư viên. bố mẹ nam cũng yêu quý hoa.
+nam sống ở hà nội. nam là học sinh và đang học lớp mười hai. bố nam tên đạt và là giám đốc, mẹ nam tên nhi và là giáo viên môn toán, vì vậy nam học giỏi môn toán. nam là học sinh giỏi trong lớp. nam rất thích thể thao . hoa là bạn gái của nam. và họ đang yêu nhau. hoa học cùng lớp với nam. họ hay đọc sách ở thư viên. bố mẹ nam cũng yêu quý hoa.
+
+ở(nam, Hà nội)
+
+học_sinh(nam)
+
+học(nam, lớp_mười_hai)
+
+bố(đat, nam)
+
+giám_đốc(đat).
+	
+mẹ(nhi, nam).
+
+giáo_viên(nhi, môn_toán).
+
+học_giỏi(nam, môn_toán)
+
+tồn tại (P, lớp_học(P) & hoc_sinh_giỏi(nam, P))
+
+rất_thích(nam, thể_thao).
+
+ban_gái(hoa,nam).
+
+yêu(hoa, nam).
+
+yêu(nam, hoa).
+
+học_cùng_lớp(hoa,nam).
+
+đọc_sách(họ, thư_viện).
+
+yêu_qúy(đạt,hoa)
+
+yêu_qúy(nhi,hoa)

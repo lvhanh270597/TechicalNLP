@@ -1,11 +1,11 @@
-từ_vựng(thích, 3).
-từ_vựng(yêu, 3).
-từ_vựng(đọc_sách, 3).
-từ_vựng(sống, 2).
+từ_vựng(rất_thích, 2).
+từ_vựng(yêu, 2).
+từ_vựng(đọc_sách, 2).
 từ_vựng(học, 2).
 từ_vựng(bố, 2).
 từ_vựng(mẹ, 2).
 từ_vựng(giáo_viên, 2).
+từ_vựng(học, 2).
 từ_vựng(học_giỏi, 2).
 từ_vựng(hoc_sinh_giỏi, 2).
 từ_vựng(ban_gái, 2).
