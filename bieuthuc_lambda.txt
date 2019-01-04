@@ -1,0 +1,97 @@
+nam sống ở hà nội. nam là học sinh và đang học lớp mười hai. bố nam tên đạt và là giám đốc, mẹ nam tên nhi và là giáo viên môn toán, vì vậy nam học giỏi môn toán. nam là học sinh giỏi của lớp. nam rất thích thể thao. hoa là bạn gái của nam. hoa học cùng lớp với nam. họ hay đọc sách ở thư viện. bố mẹ nam cũng yêu quý hoa.
+
+Danh từ riêng:
+
+λP.(P@nam)
+ 
+λP.(P@hoa)
+
+λP.(P@đạt)
+
+λP.(P@nhi)
+
+λP.(P@hà_nội)
+
+λP.(P@lớp_mười_hai)
+
+λP.(P@môn_toán)
+
+* Từ vừng quan hệ 1 ngôi: 
+
+λP.giám_đốc(P)
+
+λP.giáo_viên_môn_toán(P).
+
+λP.học_sinh(P)
+
+// những cái Danh từ một ngôi dùng để chỉ tên gọi của một phân loại không phải chỉ mối quan hệ.
+λP.lớp(P).
+
+λP.thể_thao(P).
+
+λP.sách(P).
+
+λP.thư_viện(P).
+
+
+* từ vựng có quan hệ 2 ngôi:
+
+Danh từ:
+
+λP.λX.(P@λY.bố(X,Y))
+
+λP.λX.(P@λY.mẹ(X,Y))
+
+λP.λX.(P@λY.bạn_gái(X,Y))
+
+λP.λX.(P@λY.học_sinh_giỏi(X,Y))
+
+động từ:
+λP.λX.(P@λY.học(X,Y))
+
+λP.λX.(P@λY.học_cùng_lớp(X,Y))
+
+λP.λX.(P@λY.học_giỏi(X,Y))
+
+λP.λX.(P@λY.ở(X,Y))
+
+λP.λX.(P@λY.thích(X,Y))
+
+λP.λX.(P@λY.yêu_quý(X,Y))
+
+và : λP.λQ.λX((P@X)^(Q@X))
+
+
+
+ở(nam, Hà nội)
+
+học_sinh(nam)
+
+học(nam, lớp_mười_hai)
+
+Bố(đat, nam)
+
+giám_đốc(đat).
+	
+mẹ(nhi, nam).
+
+giáo_viên_môn_toán(nhi).
+
+học_giỏi(nam,môn_toán)
+
+hoc_sinh_giỏi(nam,lớp)
+
+thích(nam,thể_thao).
+
+ban_gái( hoa,nam).
+
+học_cùng_lớp(hoa,nam).
+
+đọc_sách(họ, thư_viện).
+
+yêu_qúy(đạt,lan)
+
+yêu_qúy(nhi,lan)
+
+
+
