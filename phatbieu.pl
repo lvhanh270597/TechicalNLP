@@ -5,7 +5,7 @@ mẹ(X, nam) & sống(X, hà_nội).
 %3 hoa dang hoc lop muoi hai
 học(hoa, lớp_mười_hai).
 
-% bo nam song o ha noi va me nam cung song o ha noi
+% bo va me nam cung song o ha noi
 bố(Y, nam) & sống(Y, hà_nội) & mẹ(X, nam) & sống(X, hà_nội).
 % neu nam khong hoc lop 12 thi nam khong yeu lan
 ~học(nam, lớp_mười_hai) => ~yêu(nam, lan, _).

@@ -95,9 +95,15 @@ nn(lambda(P,lambda(X, P@ lambda(Y, mẹ(X, Y))))) --> [mẹ].
 nn(lambda(P,lambda(X, P@ lambda(Y, giáo_viên(X, Y))))) --> [giáo, viên].
 nn(lambda(P,lambda(X, P@ lambda(Y, bạn_gái(X, Y))))) --> [bạn, gái].
 
+pd(lanbda(X,~X)) --> [không].
+
+
 in(lambda(P,lambda(X, P@ lambda(Y, ở(X, Y))))) --> [ở].
 
-vb(_) --> [sống]; [là].
+vb(_) --> [là];[sống].
+
+
+
 vb(lambda(P,lambda(X, P@ lambda(Y, học(X, Y))))) --> [học].
 vb(lambda(P,lambda(X, P@ lambda(Y, học_giỏi(X, Y))))) --> [học, giỏi].
 vb(lambda(P,lambda(X, P@ lambda(Y, học_sinh_giỏi(X, Y))))) --> [học, sinh, giỏi].
@@ -107,18 +113,45 @@ vb(lambda(P,lambda(X, P@ lambda(Y, học_cùng_lớp(X, Y))))) --> [học, cùng
 vb(lambda(P,lambda(X, P@ lambda(Y, đọc_sách(X, Y))))) --> [đọc, sách].
 vb(lambda(P,lambda(X, P@ lambda(Y, yêu_qúy(X, Y))))) --> [yêu, qúy].
 
+% hoa la hoc sinh
+% neu nam khong hoc lop 12 thi nam khong yeu lan
+%  me nam song o ha 
+% nam yeu moi hoc sinh
+
+
+np1(NN @ NNP) --> nn(NN),nnp(NNP).
+np(X) --> nnp(X).
+np(X) --> nn(X).
+np(X) --> cc(_),nnp(X).
+
+vp(Y) --> vb(_),pp(Y).
+vp(X) --> vb(X),np(X).
+vp1(Y @ Z) -->vb(Y),np(Z).
+
+pp(X @ Y) --> in(X),np(Y).
+
+sen(X @ Y) --> np(X),vp(Y).
+sen(X @ Y) --> np(X),vp1(Y).
+sen((NP @ X) & (VP @ X)) --> np1(NP), vp(VP).
+sen1(~(X @ Y)) --> np(X),pd(_),vp1(Y).
+sen(SEN1 => SEN2)--> sen1(SEN1), sen1(SEN2).
+
+
+cc(_) --> [nếu];[thì].
 cc(lambda(P,lambda(Q, lambda(X, (P@ X) & (Q @ X))))) --> [và].
 det(lambda(P, lambda(Q, tồn_tại(X, (P@ X) & (Q@ X))))) --> [một].
 det(lambda(P, lambda(Q, với_mọi(X, (P@ X) => (Q@ X))))) --> [mọi];[tất,cả];[mỗi].
 
-sen(X @ Y) --> np(X), vp(Y).
-sen((NP @ X) & (VP @ X)) --> np2(NP), vp(VP).
-np(X) --> nnp(X).
-np(X) --> nn(X).
-np2(X @ Y) --> nn(X), nnp(Y).
-pp(Y @ Z) --> in(Y), np(Z).
-vp(X) --> vb(_), pp(X).
-vp(X) --> vb(_), np(X).
+% sen(X @ Y) --> np(X), vp(Y).
+% sen((NP @ X) & (VP @ X)) --> np2(NP), vp(VP).
+% np(X) --> nnp(X).
+% np(X) --> nn(X).
+% np2(X @ Y) --> nn(X), nnp(Y).
+% pp(Y @ Z) --> in(Y), np(Z).
+% vp(X) --> vb(_), pp(X).
+% vp(X) --> vb(_), np(X).
+
+
 
 % Tính biểu thức lambda với vị từ beta
 beta(A,KQ):- var(A),!,KQ=A.
