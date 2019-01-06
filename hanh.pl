@@ -75,9 +75,10 @@ con(X, Y) :- mẹ(Y, X); bố(Y, X).
 + mẹ nam sống hà_nội
 + hoa đang học lớp_mười_hai. */
 prp(lambda(P, P@ họ)) --> [họ].
+prp(lambda(P, P @ _)) --> [ai].
+prp(lambda(P, P @ _)) --> [cái, gì].
 
 nnp(lambda(P, P@ nam)) --> [nam].
-nnp(lambda(P, P@ lan)) --> [lan].
 nnp(lambda(P, P@ hà_nội)) --> [hà, nội].
 nnp(lambda(P, P@ đạt)) --> [đạt].
 nnp(lambda(P, P@ nhi)) --> [nhi].
@@ -94,8 +95,6 @@ nn(lambda(P,lambda(X, P@ lambda(Y, bố(X, Y))))) --> [bố].
 nn(lambda(P,lambda(X, P@ lambda(Y, mẹ(X, Y))))) --> [mẹ].
 nn(lambda(P,lambda(X, P@ lambda(Y, giáo_viên(X, Y))))) --> [giáo, viên].
 nn(lambda(P,lambda(X, P@ lambda(Y, bạn_gái(X, Y))))) --> [bạn, gái].
-nn(lambda(P, P @ X)) --> [ai].
-nn(lambda(P, P @ X)) --> [cái, gì].
 
 in(lambda(P,lambda(X, P@ lambda(Y, ở(X, Y))))) --> [ở].
 
@@ -119,11 +118,28 @@ cc(lambda(P, lambda(Q, P => Q))) --> [thì].
 det(lambda(P, lambda(Q, tồn_tại(X, (P@ X) & (Q@ X))))) --> [một].
 det(lambda(P, lambda(Q, với_mọi(X, (P@ X) => (Q@ X))))) --> [mọi];[tất,cả];[mỗi].
 
-sen(X @ Y) --> np(X), vp2(Y).
-sen(X @ _) --> np14(X), vp14(_).
+
+
+vp1(Y @ Z) -->vb(Y),np(Z).
+
+pp(X @ Y) --> in(X),np(Y).
+pp(Y @ Z) --> in(Y), np(Z).
+
+sen1(~(X @ Y)) --> np(X),pd(_),vp1(Y).
+sen1(NP @ _) --> np2(NP), vp14(_).
+sen1(NP @ VP) --> np(NP), vp14(VP).
+
+vp14(X @ Y) --> vb(X), np14(Y).
+np14(X) --> prp(X).
+
+sen(X @ Y) --> np(X),vp(Y).
+sen(X @ Y) --> np(X),vp1(Y).
+sen((NP @ X) & (VP @ X)) --> np1(NP), vp(VP).
+sen(SEN1 => SEN2)--> sen1(SEN1), sen1(SEN2).
 
 sen(X @ Y) --> np(X), vp(Y).
 sen((NP @ X) & (VP @ X)) --> np2(NP), vp(VP).
+sen(X) --> sen1(X).
 sen((X @ T) & (Y @ T) & (Z @ W) & (Y @ W)) --> np3(X ^ Z), vp(Y). % bo va me nam song o ha noi
 sen((Y @ X) @ Z) --> sen2(X), cc(Y), sen2(Z).
 sen2((NP @ X) & (VP @ X)) --> np2(NP), vp(VP).
@@ -131,19 +147,19 @@ sen2((NP @ X) & (Z @ (VP @ X))) --> cc(_), np2(NP), pd(Z), vp(VP).
 sen2(Z @ (NP @ VP)) --> cc(_), np(NP), pd(Z), vp(VP).
 sen2(Z @ (X @ Y)) --> np(X), pd(Z), vp2(Y).
 
-np14(X @ Y) --> nn(X), nnp(Y).
-vp14(_) --> vb(_), np(_).
-
-
-%np(X @ (Z @ Y)) --> nnp(X), cc(Y), nnp(Z).
+np(X) --> nnp(X).
+np(X) --> nn(X).
+np(X) --> cc(_),nnp(X).
 np(X) --> nnp(X).
 np(X) --> nn(X).
 
 np3((X @ T) ^ (Y @ T)) --> np1(X ^ Y), nnp(T). % bo va me nam
+np1(NN @ NNP) --> nn(NN),nnp(NNP).
 np1(NN1 ^ NN2) --> nn(NN1), cc(_), nn(NN2). % bo va me
 np2(X @ Y) --> nn(X), nnp(Y).
 
-pp(Y @ Z) --> in(Y), np(Z).
+vp(Y) --> vb(_),pp(Y).
+vp(X) --> vb(X),np(X).
 
 vp(X @ Y) --> rb(_), vb(X), np(Y).
 vp(X) --> rb(_), vb(_), pp(X).

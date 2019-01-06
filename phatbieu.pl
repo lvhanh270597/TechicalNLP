@@ -8,23 +8,29 @@ mẹ(X, nam) & sống(X, hà_nội).
 cal([hoa, đang, học, lớp, mười, hai], X).
 học(hoa, lớp_mười_hai).
 
-<<<<<<< HEAD
 %4 bo va me nam song o ha noi
 cal([bố, và, mẹ, nam, cùng, sống, ở, hà, nội], X).
+<<<<<<< HEAD
 % bo va me nam cung song o ha noi
 >>>>>>> e1d9fbf99b4c3fb8a0c2f2e3184ab805984e8b87
+=======
+>>>>>>> 3fee06fb993c440d95e2df67c2a30d540340238c
 bố(Y, nam) & sống(Y, hà_nội) & mẹ(X, nam) & sống(X, hà_nội).
-%5 neu nam khong hoc lop 12 thi nam khong yeu lan
+%5 neu nam khong hoc lop 12 thi nam khong yeu hoa
+cal([nếu,nam,không,học,lớp,mười,hai,thì,nam,không,yêu,hoa],X).
 ~học(nam, lớp_mười_hai) => ~yêu(nam, lan).
 %6 nếu mẹ nam không là giáo viên dạy môn toán thì nam không học giỏi môn toán
 cal([nếu, mẹ, nam, không, là, giáo, viên, dạy, môn, toán, thì, nam, không, học, giỏi, môn, toán], X).
 mẹ(X, nam) & ~giáo_viên(X, môn_toán) => ~học_giỏi(nam, môn_toán).
 
 % bo nam la ai?
+cal([bố, nam, là, ai], X).
 bố(X, nam).
-% nam thich cai gi?
+% nam rất thich cai gi?
+cal([nam, rất, thích, cái, gì], X).
 rất_thích(nam, X).
 % nam yeu ai?
+cal([nam, yêu, ai], X).
 yêu(nam, X).
 
 % moi dua con deu hoc gioi mon toan
