@@ -12,6 +12,8 @@ Danh từ riêng:
 
 λP.(P@hà_nội)
 
+Danh từ:
+
 λP.(P@lớp_mười_hai)
 
 λP.(P@môn_toán)
@@ -58,6 +60,8 @@ Danh từ:
 λP.λX.(P@λY.thích(X,Y))
 
 λP.λX.(P@λY.yêu_quý(X,Y))
+
+λP.λX.(P@λY.đọc_sách(X,Y))
 
 và : λP.λQ.λX((P@X)^(Q@X))
 

@@ -8,8 +8,12 @@ mẹ(X, nam) & sống(X, hà_nội).
 cal([hoa, đang, học, lớp, mười, hai], X).
 học(hoa, lớp_mười_hai).
 
+<<<<<<< HEAD
 %4 bo va me nam song o ha noi
 cal([bố, và, mẹ, nam, cùng, sống, ở, hà, nội], X).
+=======
+% bo va me nam cung song o ha noi
+>>>>>>> e1d9fbf99b4c3fb8a0c2f2e3184ab805984e8b87
 bố(Y, nam) & sống(Y, hà_nội) & mẹ(X, nam) & sống(X, hà_nội).
 %5 neu nam khong hoc lop 12 thi nam khong yeu lan
 ~học(nam, lớp_mười_hai) => ~yêu(nam, lan).
