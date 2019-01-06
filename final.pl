@@ -93,8 +93,12 @@ nn(lambda(P,lambda(X, P@ lambda(Y, bố(X, Y))))) --> [bố].
 nn(lambda(P,lambda(X, P@ lambda(Y, mẹ(X, Y))))) --> [mẹ].
 nn(lambda(P,lambda(X, P@ lambda(Y, giáo_viên(X, Y))))) --> [giáo, viên].
 nn(lambda(P,lambda(X, P@ lambda(Y, bạn_gái(X, Y))))) --> [bạn, gái].
+<<<<<<< HEAD
+nn(lambda(P, con(P))) --> [con].
+=======
 nn(lambda(P, P @ X)) --> [ai].
 nn(lambda(P, P @ X)) --> [cái, gì].
+>>>>>>> 25d5f73dbc17a87b27d80f5bb62c9d9f6cf31485
 
 pd(lanbda(X,~X)) --> [không].
 
@@ -114,6 +118,7 @@ vb(lambda(P,lambda(X, P@ lambda(Y, yêu(X, Y))))) --> [yêu].
 vb(lambda(P,lambda(X, P@ lambda(Y, học_cùng_lớp(X, Y))))) --> [học, cùng, lớp].
 vb(lambda(P,lambda(X, P@ lambda(Y, đọc_sách(X, Y))))) --> [đọc, sách].
 vb(lambda(P,lambda(X, P@ lambda(Y, yêu_qúy(X, Y))))) --> [yêu, qúy].
+vb(lambda(P,lambda(X, P@ lambda(Y,thích(X, Y))))) --> [thích].
 
 cc(lambda(P,lambda(Q, lambda(X, (P @ X) & (Q @ X))))) --> [và].
 cc(_) --> [nếu].
@@ -156,31 +161,43 @@ vp(X @ Y) --> vb(_), nn(X), vp(Y). % me nam khong la giao vien day toan
 vp2(X @ Y) --> vb(X), nn(Y).
 % hoa la hoc sinh
 % neu nam khong hoc lop 12 thi nam khong yeu lan
-%cal([nếu,nam,không,học,lớp,mười,hai,thì,nam,không,yêu,lan],K).
-
+% cal([nếu,nam,không,học,lớp,mười,hai,thì,nam,không,yêu,lan],K).
+% nam yeu moi hoc sinh
 %  me nam song o ha 
 % nam yeu moi hoc sinh
+
+rb(_)--> [đều].
+un(_) --> [đứa].
+
+
 
 
 np1(NN @ NNP) --> nn(NN),nnp(NNP).
 np(X) --> nnp(X).
 np(X) --> nn(X).
 np(X) --> cc(_),nnp(X).
+np(X @ Y) --> det(X), np(Y).
+np(X) --> un(_),nn(X).
+np((X @ K) & (Z @ K)) --> nn(X),cc(Y),nn(Z),nnp(K).
 
 vp(Y) --> vb(_),pp(Y).
 vp(X) --> vb(X),np(X).
+vp(X @ (Y @ Z)) --> vb(X), det(Y),np(Z).
+vp(Y @ Z)--> rb(_),vb(Y),np(Z).
 vp1(Y @ Z) -->vb(Y),np(Z).
+
 
 pp(X @ Y) --> in(X),np(Y).
 
 sen(X @ Y) --> np(X),vp(Y).
 sen(X @ Y) --> np(X),vp1(Y).
 sen((NP @ X) & (VP @ X)) --> np1(NP), vp(VP).
-sen1(~(X @ Y)) --> np(X),pd(_),vp1(Y).
 sen(SEN1 => SEN2)--> sen1(SEN1), sen1(SEN2).
+sen1(~(X @ Y)) --> np(X),pd(_),vp1(Y).
 
 
-cc(_) --> [nếu];[thì].
+
+cc(_) --> [nếu];[thì];[và].
 cc(lambda(P,lambda(Q, lambda(X, (P@ X) & (Q @ X))))) --> [và].
 det(lambda(P, lambda(Q, tồn_tại(X, (P@ X) & (Q@ X))))) --> [một].
 det(lambda(P, lambda(Q, với_mọi(X, (P@ X) => (Q@ X))))) --> [mọi];[tất,cả];[mỗi].

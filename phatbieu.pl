@@ -32,5 +32,5 @@ yêu(nam, X).
 với_mọi(X, con(X, _) => học_giỏi(X, môn_toán)).
 % nam yeu moi hoc sinh
 với_mọi(X, học_sinh(X) => yêu(nam, X, _)).
-% bo me nam yeu quy moi nguoi
+% bo và me nam yeu quy moi nguoi
 với_mọi(X, bố(Y, nam) & mẹ(Z, nam) => yêu_qúy(Y, X) & yêu_qúy(Z, X)).
