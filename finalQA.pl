@@ -94,8 +94,8 @@ nn(lambda(P,lambda(X, P@ lambda(Y, bố(X, Y))))) --> [bố].
 nn(lambda(P,lambda(X, P@ lambda(Y, mẹ(X, Y))))) --> [mẹ].
 nn(lambda(P,lambda(X, P@ lambda(Y, giáo_viên(X, Y))))) --> [giáo, viên].
 nn(lambda(P,lambda(X, P@ lambda(Y, bạn_gái(X, Y))))) --> [bạn, gái].
-nn(lambda(P, P@ X)) --> [ai].
-nn(lambda(P, P@ X)) --> [cái, gì].
+nn(lambda(P, P@ _)) --> [ai].
+nn(lambda(P, P@ _)) --> [cái, gì].
 
 in(lambda(P,lambda(X, P@ lambda(Y, ở(X, Y))))) --> [ở].
 
@@ -105,7 +105,6 @@ vb(lambda(P,lambda(X, P@ lambda(Y, học_giỏi(X, Y))))) --> [học, giỏi].
 vb(lambda(P,lambda(X, P@ lambda(Y, học_sinh_giỏi(X, Y))))) --> [học, sinh, giỏi].
 vb(lambda(P,lambda(X, P@ lambda(Y, rất_thích(X, Y))))) --> [rất, thích].
 vb(lambda(P,lambda(X, P@ lambda(Y, yêu(X, Y))))) --> [yêu].
-vb(lambda(P,lambda(X, P@ lambda(Y, thích(X, Y))))) --> [thích].
 vb(lambda(P,lambda(X, P@ lambda(Y, học_cùng_lớp(X, Y))))) --> [học, cùng, lớp].
 vb(lambda(P,lambda(X, P@ lambda(Y, đọc_sách(X, Y))))) --> [đọc, sách].
 vb(lambda(P,lambda(X, P@ lambda(Y, yêu_qúy(X, Y))))) --> [yêu, qúy].
@@ -115,12 +114,12 @@ det(lambda(P, lambda(Q, tồn_tại(X, (P@ X) & (Q@ X))))) --> [một].
 det(lambda(P, lambda(Q, với_mọi(X, (P@ X) => (Q@ X))))) --> [mọi];[tất,cả];[mỗi].
 
 sen(X @ Y) --> np(X), vp(Y).
-sen(X @ Y) --> np14(X), vp14(_).
+sen(X @ _) --> np14(X), vp14(_).
 np14(X @ Y) --> nn(X), nnp(Y).
 np(X) --> nnp(X).
 np(X) --> nn(X).
 vp(X @ Y) --> vb(X), np(Y).
-vp14(_) --> vb(_), np(X).
+vp14(_) --> vb(_), np(_).
 
 % Tính biểu thức lambda với vị từ beta
 beta(A,KQ):- var(A),!,KQ=A.

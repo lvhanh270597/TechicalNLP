@@ -12,7 +12,7 @@ học(hoa, lớp_mười_hai).
 cal([bố, và, mẹ, nam, cùng, sống, ở, hà, nội], X).
 bố(Y, nam) & sống(Y, hà_nội) & mẹ(X, nam) & sống(X, hà_nội).
 %5 neu nam khong hoc lop 12 thi nam khong yeu lan
-~học(nam, lớp_mười_hai) => ~yêu(nam, lan, _).
+~học(nam, lớp_mười_hai) => ~yêu(nam, lan).
 %6 nếu mẹ nam không là giáo viên dạy môn toán thì nam không học giỏi môn toán
 cal([nếu, mẹ, nam, không, là, giáo, viên, dạy, môn, toán, thì, nam, không, học, giỏi, môn, toán], X).
 mẹ(X, nam) & ~giáo_viên(X, môn_toán) => ~học_giỏi(nam, môn_toán).
@@ -20,7 +20,7 @@ mẹ(X, nam) & ~giáo_viên(X, môn_toán) => ~học_giỏi(nam, môn_toán).
 % bo nam la ai?
 bố(X, nam).
 % nam thich cai gi?
-thích(nam, X, Y).
+rất_thích(nam, X).
 % nam yeu ai?
 yêu(nam, X).
 
