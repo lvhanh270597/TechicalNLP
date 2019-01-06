@@ -11,7 +11,6 @@ học(hoa, lớp_mười_hai).
 <<<<<<< HEAD
 %4 bo va me nam song o ha noi
 cal([bố, và, mẹ, nam, cùng, sống, ở, hà, nội], X).
-=======
 % bo va me nam cung song o ha noi
 >>>>>>> e1d9fbf99b4c3fb8a0c2f2e3184ab805984e8b87
 bố(Y, nam) & sống(Y, hà_nội) & mẹ(X, nam) & sống(X, hà_nội).
@@ -29,8 +28,10 @@ rất_thích(nam, X).
 yêu(nam, X).
 
 % moi dua con deu hoc gioi mon toan
+cal([mọi,đứa,con, đều,thích,môn,toán],K). 
 với_mọi(X, con(X, _) => học_giỏi(X, môn_toán)).
 % nam yeu moi hoc sinh
 với_mọi(X, học_sinh(X) => yêu(nam, X, _)).
 % bo và me nam yeu quy moi nguoi
+cal([nam,yêu,mọi,học,sinh],K).
 với_mọi(X, bố(Y, nam) & mẹ(Z, nam) => yêu_qúy(Y, X) & yêu_qúy(Z, X)).
