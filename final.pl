@@ -77,7 +77,6 @@ con(X, Y) :- mẹ(Y, X); bố(Y, X).
 prp(lambda(P, P@ họ)) --> [họ].
 
 nnp(lambda(P, P@ nam)) --> [nam].
-nnp(lambda(P, P@ lan)) --> [lan].
 nnp(lambda(P, P@ hà_nội)) --> [hà, nội].
 nnp(lambda(P, P@ đạt)) --> [đạt].
 nnp(lambda(P, P@ nhi)) --> [nhi].
@@ -155,7 +154,6 @@ vp(X) --> vb(_), pp(X).
 vp(X) --> vb(_), np(X).
 vp(X @ Y) --> vb(_), nn(X), vp(Y). % me nam khong la giao vien day toan
 vp2(X @ Y) --> vb(X), nn(Y).
-
 % hoa la hoc sinh
 % neu nam khong hoc lop 12 thi nam khong yeu lan
 %cal([nếu,nam,không,học,lớp,mười,hai,thì,nam,không,yêu,lan],K).
