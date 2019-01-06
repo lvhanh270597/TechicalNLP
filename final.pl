@@ -115,6 +115,8 @@ vb(lambda(P,lambda(X, P@ lambda(Y, yêu_qúy(X, Y))))) --> [yêu, qúy].
 
 % hoa la hoc sinh
 % neu nam khong hoc lop 12 thi nam khong yeu lan
+%cal([nếu,nam,không,học,lớp,mười,hai,thì,nam,không,yêu,lan],K).
+
 %  me nam song o ha 
 % nam yeu moi hoc sinh
 
