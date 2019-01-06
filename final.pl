@@ -31,7 +31,7 @@ từ_vựng(hay, 0).
 từ_vựng(lan, 0).
 
 % Tập các phép toán
-
+:-op(960,xfy,^).
 :-op(950,yfx,@).
 :-op(925,yfx,x).
 :-op(900,yfx,=>).
@@ -97,7 +97,10 @@ nn(lambda(P,lambda(X, P@ lambda(Y, bạn_gái(X, Y))))) --> [bạn, gái].
 
 in(lambda(P,lambda(X, P@ lambda(Y, ở(X, Y))))) --> [ở].
 
-vb(_) --> [sống]; [là].
+rb(_) --> [đang]; [cũng]; [cùng].
+pd(lambda(X, ~X))  --> [không].
+
+vb(_) --> [sống]; [là]; [dạy].
 vb(lambda(P,lambda(X, P@ lambda(Y, học(X, Y))))) --> [học].
 vb(lambda(P,lambda(X, P@ lambda(Y, học_giỏi(X, Y))))) --> [học, giỏi].
 vb(lambda(P,lambda(X, P@ lambda(Y, học_sinh_giỏi(X, Y))))) --> [học, sinh, giỏi].
@@ -107,18 +110,38 @@ vb(lambda(P,lambda(X, P@ lambda(Y, học_cùng_lớp(X, Y))))) --> [học, cùng
 vb(lambda(P,lambda(X, P@ lambda(Y, đọc_sách(X, Y))))) --> [đọc, sách].
 vb(lambda(P,lambda(X, P@ lambda(Y, yêu_qúy(X, Y))))) --> [yêu, qúy].
 
-cc(lambda(P,lambda(Q, lambda(X, (P@ X) & (Q @ X))))) --> [và].
+cc(lambda(P,lambda(Q, lambda(X, (P @ X) & (Q @ X))))) --> [và].
+cc(_) --> [nếu].
+cc(lambda(P, lambda(Q, P => Q))) --> [thì].
+
 det(lambda(P, lambda(Q, tồn_tại(X, (P@ X) & (Q@ X))))) --> [một].
 det(lambda(P, lambda(Q, với_mọi(X, (P@ X) => (Q@ X))))) --> [mọi];[tất,cả];[mỗi].
 
 sen(X @ Y) --> np(X), vp(Y).
 sen((NP @ X) & (VP @ X)) --> np2(NP), vp(VP).
+sen((X @ T) & (Y @ T) & (Z @ W) & (Y @ W)) --> np3(X ^ Z), vp(Y). % bo va me nam song o ha noi
+sen((Y @ X) @ Z) --> sen2(X), cc(Y), sen2(Z).
+sen2((NP @ X) & (VP @ X)) --> np2(NP), vp(VP).
+sen2((NP @ X) & (Z @ (VP @ X))) --> cc(_), np2(NP), pd(Z), vp(VP).
+sen2(Z @ (NP @ VP)) --> cc(_), np(NP), pd(Z), vp(VP).
+sen2(Z @ (X @ Y)) --> np(X), pd(Z), vp2(Y).
+
+%np(X @ (Z @ Y)) --> nnp(X), cc(Y), nnp(Z).
 np(X) --> nnp(X).
 np(X) --> nn(X).
+
+np3((X @ T) ^ (Y @ T)) --> np1(X ^ Y), nnp(T). % bo va me nam
+np1(NN1 ^ NN2) --> nn(NN1), cc(_), nn(NN2). % bo va me
 np2(X @ Y) --> nn(X), nnp(Y).
+
 pp(Y @ Z) --> in(Y), np(Z).
+
+vp(X @ Y) --> rb(_), vb(X), np(Y).
+vp(X) --> rb(_), vb(_), pp(X).
 vp(X) --> vb(_), pp(X).
 vp(X) --> vb(_), np(X).
+vp(X @ Y) --> vb(_), nn(X), vp(Y). % me nam khong la giao vien day toan
+vp2(X @ Y) --> vb(X), nn(Y).
 
 % Tính biểu thức lambda với vị từ beta
 beta(A,KQ):- var(A),!,KQ=A.
@@ -147,3 +170,4 @@ kiemtra(S):- sen(R,S,[]), beta(R,K), K.
 cal(S, K) :- sen(R, S, []), beta(R, K).
 calNP(NP, K) :- np(X, NP, []), beta(X, K).
 calVP(VP, K) :- vp(X, VP, []), beta(X, K).
+cal2(S, K) :- sen2(R, S, []), beta(R, K).
