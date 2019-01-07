@@ -29,6 +29,7 @@ cal([nam, yêu, ai], X).
 yêu(nam, X).
 
 % moi dua con deu hoc gioi mon toan
+cal([mỗi, đứa, con, đều, học, giỏi, môn, toán], X).
 với_mọi(X, con(X, _) => học_giỏi(X, môn_toán)).
 % nam yeu moi hoc sinh
 với_mọi(X, học_sinh(X) => yêu(nam, X, _)).

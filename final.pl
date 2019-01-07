@@ -93,12 +93,9 @@ nn(lambda(P,lambda(X, P@ lambda(Y, bố(X, Y))))) --> [bố].
 nn(lambda(P,lambda(X, P@ lambda(Y, mẹ(X, Y))))) --> [mẹ].
 nn(lambda(P,lambda(X, P@ lambda(Y, giáo_viên(X, Y))))) --> [giáo, viên].
 nn(lambda(P,lambda(X, P@ lambda(Y, bạn_gái(X, Y))))) --> [bạn, gái].
-<<<<<<< HEAD
 nn(lambda(P, con(P))) --> [con].
-=======
 nn(lambda(P, P @ X)) --> [ai].
 nn(lambda(P, P @ X)) --> [cái, gì].
->>>>>>> 25d5f73dbc17a87b27d80f5bb62c9d9f6cf31485
 
 pd(lanbda(X,~X)) --> [không].
 

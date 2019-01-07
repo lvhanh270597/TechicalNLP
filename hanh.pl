@@ -95,6 +95,7 @@ nn(lambda(P,lambda(X, P@ lambda(Y, bố(X, Y))))) --> [bố].
 nn(lambda(P,lambda(X, P@ lambda(Y, mẹ(X, Y))))) --> [mẹ].
 nn(lambda(P,lambda(X, P@ lambda(Y, giáo_viên(X, Y))))) --> [giáo, viên].
 nn(lambda(P,lambda(X, P@ lambda(Y, bạn_gái(X, Y))))) --> [bạn, gái].
+nn(_) --> [người].
 
 in(lambda(P,lambda(X, P@ lambda(Y, ở(X, Y))))) --> [ở].
 
@@ -109,16 +110,15 @@ vb(lambda(P,lambda(X, P@ lambda(Y, rất_thích(X, Y))))) --> [rất, thích].
 vb(lambda(P,lambda(X, P@ lambda(Y, yêu(X, Y))))) --> [yêu].
 vb(lambda(P,lambda(X, P@ lambda(Y, học_cùng_lớp(X, Y))))) --> [học, cùng, lớp].
 vb(lambda(P,lambda(X, P@ lambda(Y, đọc_sách(X, Y))))) --> [đọc, sách].
-vb(lambda(P,lambda(X, P@ lambda(Y, yêu_qúy(X, Y))))) --> [yêu, qúy].
+vb(lambda(X,lambda(Y, yêu_quý(Y, X)))) --> [yêu, quý].
 
 cc(lambda(P,lambda(Q, lambda(X, (P @ X) & (Q @ X))))) --> [và].
 cc(_) --> [nếu].
 cc(lambda(P, lambda(Q, P => Q))) --> [thì].
 
 det(lambda(P, lambda(Q, tồn_tại(X, (P@ X) & (Q@ X))))) --> [một].
-det(lambda(P, lambda(Q, với_mọi(X, (P@ X) => (Q@ X))))) --> [mọi];[tất,cả];[mỗi].
-
-
+det(lambda(P, lambda(Q, với_mọi(X, (P@ X) => (Q@ X))))) --> [tất,cả];[mỗi].
+det(lambda(P, lambda(Q, với_mọi(X, Q => (P @ X) @ B)))) --> [mọi].
 
 vp1(Y @ Z) -->vb(Y),np(Z).
 
@@ -146,21 +146,27 @@ sen2((NP @ X) & (VP @ X)) --> np2(NP), vp(VP).
 sen2((NP @ X) & (Z @ (VP @ X))) --> cc(_), np2(NP), pd(Z), vp(VP).
 sen2(Z @ (NP @ VP)) --> cc(_), np(NP), pd(Z), vp(VP).
 sen2(Z @ (X @ Y)) --> np(X), pd(Z), vp2(Y).
+sen2((X @ T) & (Z @ W) => (Y @ T) & (Y @ W)) --> np3(X ^ Z), vp4(Y).
 
 np(X) --> nnp(X).
 np(X) --> nn(X).
 np(X) --> cc(_),nnp(X).
 np(X) --> nnp(X).
 np(X) --> nn(X).
+np(X) --> det(X), nn(_).
+
+det(lambda(P, lambda(Q, với_mọi(X, Q => (P @ X) @ B)))) --> [mọi].
+sen3(Y @ ((N1 @ _) ^ (N2 @ _))) --> np3(N1 ^ N2), vp4(Y).
 
 np3((X @ T) ^ (Y @ T)) --> np1(X ^ Y), nnp(T). % bo va me nam
 np1(NN @ NNP) --> nn(NN),nnp(NNP).
 np1(NN1 ^ NN2) --> nn(NN1), cc(_), nn(NN2). % bo va me
 np2(X @ Y) --> nn(X), nnp(Y).
 
-vp(Y) --> vb(_),pp(Y).
-vp(X) --> vb(X),np(X).
+vp4(X) --> rb(_), vb(X), np(_).
+vp4(Y @ X) --> vb(X), np(Y).
 
+vp(Y) --> vb(_),pp(Y).
 vp(X @ Y) --> rb(_), vb(X), np(Y).
 vp(X) --> rb(_), vb(_), pp(X).
 vp(X) --> vb(_), pp(X).
