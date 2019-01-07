@@ -83,6 +83,7 @@ nnp(lambda(P, P@ hà_nội)) --> [hà, nội].
 nnp(lambda(P, P@ đạt)) --> [đạt].
 nnp(lambda(P, P@ nhi)) --> [nhi].
 nnp(lambda(P, P@ hoa)) --> [hoa].
+nnp22(nam) --> [nam].
 
 nn(lambda(P, P@ lớp)) --> [lớp].
 nn(lambda(P, P@ lớp_mười_hai)) --> [lớp, mười, hai].
@@ -96,6 +97,10 @@ nn(lambda(P,lambda(X, P@ lambda(Y, bố(X, Y))))) --> [bố].
 nn(lambda(P,lambda(X, P@ lambda(Y, mẹ(X, Y))))) --> [mẹ].
 nn(lambda(P,lambda(X, P@ lambda(Y, giáo_viên(X, Y))))) --> [giáo, viên].
 nn(lambda(P,lambda(X, P@ lambda(Y, bạn_gái(X, Y))))) --> [bạn, gái].
+
+nn22(X^Y^bố(Y, X)) --> [bố].
+nn22(X^Y^mẹ(Y, X)) --> [mẹ].
+nn22(_) --> [người].
 
 in(lambda(P,lambda(X, P@ lambda(Y, ở(X, Y))))) --> [ở].
 
@@ -113,15 +118,16 @@ vb(lambda(P,lambda(X, P@ lambda(Y, học_cùng_lớp(X, Y))))) --> [học, cùng
 vb(lambda(P,lambda(X, P@ lambda(Y, đọc_sách(X, Y))))) --> [đọc, sách].
 vb(lambda(P,lambda(X, P@ lambda(Y, yêu_qúy(X, Y))))) --> [yêu, qúy].
 vb(lambda(P,lambda(X, P@ lambda(Y,thích(X, Y))))) --> [thích].
+vb22(X^B^M^(yêu_quý(B, X) & yêu_quý(M, X))) --> [yêu, quý].
 
 cc(lambda(P,lambda(Q, lambda(X, (P @ X) & (Q @ X))))) --> [và].
 cc(_) --> [nếu].
 cc(lambda(P, lambda(Q, P => Q))) --> [thì].
+cc22(X^Y^(X & Y)) --> [và].
 
 det(lambda(P, lambda(Q, tồn_tại(X, (P@ X) & (Q@ X))))) --> [một].
 det(lambda(P, lambda(Q, với_mọi(X, (P@ X) => (Q@ X))))) --> [mọi];[tất,cả];[mỗi].
-
-
+det22((X^B^M^Q)^P^B^M^với_mọi(X, P => Q)) --> [mọi].
 
 vp1(Y @ Z) -->vb(Y),np(Z).
 pp(X @ Y) --> in(X),np(Y).
@@ -133,7 +139,15 @@ sen1(NP @ VP) --> np(NP), vp14(VP).
 
 vp14(X @ Y) --> vb(X), np14(Y).
 np14(X) --> prp(X).
+np33(Y) --> np22(C^Y), nnp22(C).
+np33(X) --> nn22(Y^X), np22(Y).
+np33(X) --> nn22(X).
+np33(X) --> nnp22(X).
+np33(X) --> det22(X), nn22(_).
+np22(C^Y) --> nn22(C^X), cc22(X^Z^Y), nn22(C^Z).
+vp33(T^B^M^Y) --> vb22(C^B^M^Q), np33((C^B^M^Q)^T^B^M^Y).
 
+sen(Y) --> np33((B^B1) & (M^M1)), vp33((B1 & M1)^B^M^Y).
 sen(X @ Y) --> np(X),vp(Y).
 sen(X @ Y) --> np(X),vp1(Y).
 sen((NP @ X) & (VP @ X)) --> np1(NP), vp(VP).
