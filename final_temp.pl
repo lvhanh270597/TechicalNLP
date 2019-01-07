@@ -75,35 +75,42 @@ con(X, Y) :- mẹ(Y, X); bố(Y, X).
 + mẹ nam sống hà_nội
 + hoa đang học lớp_mười_hai. */
 prp(lambda(P, P@ họ)) --> [họ].
-prp(lambda(P, P @ _)) --> [ai].
-prp(lambda(P, P @ _)) --> [cái, gì].
 
 nnp(lambda(P, P@ nam)) --> [nam].
+nnp(lambda(P, P@ lan)) --> [lan].
 nnp(lambda(P, P@ hà_nội)) --> [hà, nội].
 nnp(lambda(P, P@ đạt)) --> [đạt].
 nnp(lambda(P, P@ nhi)) --> [nhi].
 nnp(lambda(P, P@ hoa)) --> [hoa].
 
+
+np((X @ K) & (Z @ K)) --> nn(X),cc(Y),nn(Z),nnp(K).
 nn(lambda(P, P@ lớp)) --> [lớp].
 nn(lambda(P, P@ lớp_mười_hai)) --> [lớp, mười, hai].
 nn(lambda(P, P@ môn_toán)) --> [môn, toán].
 nn(lambda(P, P@ thể_thao)) --> [thể, thao].
-nn(lambda(P, P@ thư_viện)) --> [thư, viện].
+nn(lambda(P, P@ thư_viện)) --> [tonhư, viện].
 nn(lambda(P, học_sinh(P))) --> [học, sinh].
 nn(lambda(P, giám_đốc(P))) --> [giám, đốc].
-nn(lambda(P, con(P,_))) --> [con].
 nn(lambda(P,lambda(X, P@ lambda(Y, bố(X, Y))))) --> [bố].
 nn(lambda(P,lambda(X, P@ lambda(Y, mẹ(X, Y))))) --> [mẹ].
 nn(lambda(P,lambda(X, P@ lambda(Y, giáo_viên(X, Y))))) --> [giáo, viên].
 nn(lambda(P,lambda(X, P@ lambda(Y, bạn_gái(X, Y))))) --> [bạn, gái].
 
+nn(lambda(P, con(P,K))) --> [con].
+nn(lambda(P, P @ X)) --> [ai].
+nn(lambda(P, P @ X)) --> [cái, gì].
+
+pd(lanbda(X,~X)) --> [không].
+
+
 in(lambda(P,lambda(X, P@ lambda(Y, ở(X, Y))))) --> [ở].
 
-rb(_) --> [đang]; [cũng]; [cùng];[đều].
+rb(_) --> [đang]; [cũng]; [cùng].
 pd(lambda(X, ~X))  --> [không].
-un(_) --> [đứa].
 
 vb(_) --> [sống]; [là]; [dạy].
+
 vb(lambda(P,lambda(X, P@ lambda(Y, học(X, Y))))) --> [học].
 vb(lambda(P,lambda(X, P@ lambda(Y, học_giỏi(X, Y))))) --> [học, giỏi].
 vb(lambda(P,lambda(X, P@ lambda(Y, học_sinh_giỏi(X, Y))))) --> [học, sinh, giỏi].
@@ -118,58 +125,80 @@ cc(lambda(P,lambda(Q, lambda(X, (P @ X) & (Q @ X))))) --> [và].
 cc(_) --> [nếu].
 cc(lambda(P, lambda(Q, P => Q))) --> [thì].
 
+
+pp(X @ Y) --> in(X),np(Y).
+
+
+
+
 det(lambda(P, lambda(Q, tồn_tại(X, (P@ X) & (Q@ X))))) --> [một].
 det(lambda(P, lambda(Q, với_mọi(X, (P@ X) => (Q@ X))))) --> [mọi];[tất,cả];[mỗi].
 
-
-
-vp1(Y @ Z) -->vb(Y),np(Z).
-pp(X @ Y) --> in(X),np(Y).
-pp(Y @ Z) --> in(Y), np(Z).
-
-sen1(~(X @ Y)) --> np(X),pd(_),vp1(Y).
-sen1(NP @ _) --> np2(NP), vp14(_).
-sen1(NP @ VP) --> np(NP), vp14(VP).
-
-vp14(X @ Y) --> vb(X), np14(Y).
-np14(X) --> prp(X).
-
-sen(X @ Y) --> np(X),vp(Y).
-sen(X @ Y) --> np(X),vp1(Y).
-sen((NP @ X) & (VP @ X)) --> np1(NP), vp(VP).
-sen(SEN1 => SEN2)--> sen1(SEN1), sen1(SEN2).
-sen(X @ Y) --> np(X), vp(Y).
-sen((NP @ X) & (VP @ X)) --> np2(NP), vp(VP).
-sen(X) --> sen1(X).
-sen((X @ T) & (Y @ T) & (Z @ W) & (Y @ W)) --> np3(X ^ Z), vp(Y). % bo va me nam song o ha noi
 sen((Y @ X) @ Z) --> sen2(X), cc(Y), sen2(Z).
 sen2((NP @ X) & (VP @ X)) --> np2(NP), vp(VP).
 sen2((NP @ X) & (Z @ (VP @ X))) --> cc(_), np2(NP), pd(Z), vp(VP).
 sen2(Z @ (NP @ VP)) --> cc(_), np(NP), pd(Z), vp(VP).
 sen2(Z @ (X @ Y)) --> np(X), pd(Z), vp2(Y).
+sen(X @ Y) --> np(X), vp2(Y).
+sen(X @ _) --> np14(X), vp14(_).
 
+sen(X @ Y) --> np(X), vp(Y).
+sen((NP @ X) & (VP @ X)) --> np2(NP), vp(VP).
+sen((X @ T) & (Y @ T) & (Z @ W) & (Y @ W)) --> np3(X ^ Z), vp(Y). % bo va me nam song o ha noi
+sen(X @ Y) --> np(X),vp(Y).
+sen(X @ Y) --> np(X),vp1(Y).
+sen((NP @ X) & (VP @ X)) --> np1(NP), vp(VP).
+sen(SEN1 => SEN2)--> sen1(SEN1), sen1(SEN2).
+sen1(~(X @ Y)) --> np(X),pd(_),vp1(Y).
+
+
+np14(X @ Y) --> nn(X), nnp(Y).
+vp14(_) --> vb(_), np(_).
+
+
+%np(X @ (Z @ Y)) --> nnp(X), cc(Y), nnp(Z).
 np(X) --> nnp(X).
 np(X) --> nn(X).
-np(X) --> un(_),nn(X).
-np(X) --> cc(_),nnp(X).
-np(X) --> nnp(X).
-np(X) --> nn(X).
-np(X @ Y) --> det(X), np(Y).
+
 
 np3((X @ T) ^ (Y @ T)) --> np1(X ^ Y), nnp(T). % bo va me nam
-np1(NN @ NNP) --> nn(NN),nnp(NNP).
 np1(NN1 ^ NN2) --> nn(NN1), cc(_), nn(NN2). % bo va me
 np2(X @ Y) --> nn(X), nnp(Y).
+np1(NN @ NNP) --> nn(NN),nnp(NNP).
+np(X) --> nnp(X).
+np(X) --> nn(X).
+np(X) --> cc(_),nnp(X).
+np(X @ Y) --> det(X), np(Y).
+np(X) --> un(_),nn(X).
+
+pp(Y @ Z) --> in(Y), np(Z).
 
 vp(Y) --> vb(_),pp(Y).
 vp(X) --> vb(X),np(X).
 vp(X @ (Y @ Z)) --> vb(X), det(Y),np(Z).
+vp(Y @ Z)--> rb(_),vb(Y),np(Z).
+vp1(Y @ Z) -->vb(Y),np(Z).
 vp(X @ Y) --> rb(_), vb(X), np(Y).
 vp(X) --> rb(_), vb(_), pp(X).
 vp(X) --> vb(_), pp(X).
 vp(X) --> vb(_), np(X).
 vp(X @ Y) --> vb(_), nn(X), vp(Y). % me nam khong la giao vien day toan
 vp2(X @ Y) --> vb(X), nn(Y).
+
+% hoa la hoc sinh
+% neu nam khong hoc lop 12 thi nam khong yeu lan
+% cal([nếu,nam,không,học,lớp,mười,hai,thì,nam,không,yêu,lan],K).
+% nam yeu moi hoc sinh
+%  me nam song o ha 
+% nam yeu moi hoc sinh
+
+rb(_)--> [đều].
+un(_) --> [đứa].
+
+cc(_) --> [nếu];[thì];[và].
+cc(lambda(P,lambda(Q, lambda(X, (P@ X) & (Q @ X))))) --> [và].
+det(lambda(P, lambda(Q, tồn_tại(X, (P@ X) & (Q@ X))))) --> [một].
+det(lambda(P, lambda(Q, với_mọi(X, (P@ X) => (Q@ X))))) --> [mọi];[tất,cả];[mỗi].
 
 
 % Tính biểu thức lambda với vị từ beta
