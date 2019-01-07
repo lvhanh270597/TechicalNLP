@@ -60,8 +60,8 @@ ban_gái(hoa, nam).
 yêu(hoa, nam).
 yêu(nam, hoa).
 đọc_sách(họ, thư_viện).
-yêu_qúy(đạt, lan).
-yêu_qúy(nhi, lan).
+yêu_quý(đạt, lan).
+yêu_quý(nhi, lan).
 học_sinh(nam).
 học_sinh(X) :- học(X, _), !.
 học_cùng_lớp(hoa, nam).
@@ -116,7 +116,7 @@ vb(lambda(P,lambda(X, P@ lambda(Y, rất_thích(X, Y))))) --> [rất, thích].
 vb(lambda(P,lambda(X, P@ lambda(Y, yêu(X, Y))))) --> [yêu].
 vb(lambda(P,lambda(X, P@ lambda(Y, học_cùng_lớp(X, Y))))) --> [học, cùng, lớp].
 vb(lambda(P,lambda(X, P@ lambda(Y, đọc_sách(X, Y))))) --> [đọc, sách].
-vb(lambda(P,lambda(X, P@ lambda(Y, yêu_qúy(X, Y))))) --> [yêu, qúy].
+vb(lambda(P,lambda(X, P@ lambda(Y, yêu_quý(X, Y))))) --> [yêu, quý].
 vb(lambda(P,lambda(X, P@ lambda(Y,thích(X, Y))))) --> [thích].
 vb22(X^B^M^(yêu_quý(B, X) & yêu_quý(M, X))) --> [yêu, quý].
 
@@ -207,10 +207,15 @@ repl_lst(_,_,[],[]).
 repl_lst(A,X,[H1|T1],[H2|T2]):-
 	repl(A,X,H1,H2), repl_lst(A,X,T1,T2).
 
-% Hỏi đáp câu đúng/sai.
-kiemtra(S):- sen(R,S,[]), beta(R,K), K.
 % Tính ra ngữ nghĩa từ câu
-cal(S, K) :- sen(R, S, []), beta(R, K).
+cal(S, K) :- sen(R, S, []), beta(R, K), !.
 calNP(NP, K) :- np(X, NP, []), beta(X, K).
 calVP(VP, K) :- vp(X, VP, []), beta(X, K).
-cal2(S, K) :- sen2(R, S, []), beta(R, K).
+
+empty_list([]).
+empty_list([X]) :- empty_list(X).
+
+reply(Q, X, false) :- cal(Q, X), not(X), !.
+reply(Q, X, true) :- cal(Q, X), term_variables(X, V), findall(V, X, A), empty_list(A), !.
+reply(Q, X, true) :- cal(Q, X), term_variables(X, V), findall(V, X, A), term_variables(A, VA), not(empty_list(VA)), !.
+reply(Q, X, A) :- cal(Q, X), term_variables(X, L), findall(L, X, A).

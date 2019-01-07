@@ -10,7 +10,6 @@ học(hoa, lớp_mười_hai).
 
 %4 bo va me nam song o ha noi
 cal([bố, và, mẹ, nam, cùng, sống, ở, hà, nội], X).
-% bo va me nam cung song o ha noi
 bố(Y, nam) & sống(Y, hà_nội) & mẹ(X, nam) & sống(X, hà_nội).
 %5 neu nam khong hoc lop 12 thi nam khong yeu hoa
 cal([nếu,nam,không,học,lớp,mười,hai,thì,nam,không,yêu,hoa],X).
@@ -33,7 +32,7 @@ yêu(nam, X).
 cal([mỗi, đứa, con, đều, học, giỏi, môn, toán], X).
 với_mọi(X, con(X, _) => học_giỏi(X, môn_toán)).
 % nam yeu moi hoc sinh
-cal([nam,yêu,mọi,học,sinh],K).
+cal([nam, yêu, mọi, học, sinh],K).
 với_mọi(X, học_sinh(X) => yêu(nam, X, _)).
 % bo và me nam yeu quy moi nguoi
 cal([bố, và, mẹ, nam, yêu, quý, mọi, người], X).
